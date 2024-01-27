@@ -12,7 +12,10 @@ body {
     align-items: center;
     margin: 0 auto;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color: #eaeaea;
     width: fit-content;
     padding: 20px 80px;
+}
+.time-container:hover {
+    opacity: .8;
 }
