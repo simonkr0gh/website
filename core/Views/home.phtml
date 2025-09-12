@@ -1,16 +1,38 @@
 <?php include('layout/head.php') ?>
-<div class="main-wrapper container mt-4">
-    <?php include ('layout/header.phtml') ?>
 
+<script>
+    function HomePage() {
+        return {
+            greets: {
+                morning: 'Good morning',
+                evening: 'Good evening',
+                night: 'Good night',
+            },
+            currentHour: new Date().getHours(),
+            getGreeting() {
+                let message = "Welcome to my portfolio";
+                let greeting;
+                if (this.currentHour < 12) {
+                    greeting = this.greets.morning;
+                } else if (this.currentHour < 18) {
+                    greeting = this.greets.evening;
+                } else {
+                    greeting = this.greets.night;
+                }
+                return `${greeting} - ${message}`;
+            }
+        }
+    }
+</script>
+
+<div x-data="HomePage();" class="main-wrapper container mt-4">
+    <?php include ('layout/header.phtml') ?>
     <div class="jumbotron">
-        <h1 class="display-4">Welcome to my portfolio</h1>
-        <h2>hejsa</h2>
+        <h1 class="display-4" x-text="getGreeting()"></h1>
         <p class="lead">by Simon Krogh</p>
-        <h3>du er en skiderik</h3>
         <hr class="my-4">
         <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </div>
-
 
     <!-- Explore Section -->
     <section id="explore" class="my-4">
